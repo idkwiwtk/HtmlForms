@@ -1,0 +1,628 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml">
+ 
+<head>
+<title>HTML User Interface Controls</title>
+ 
+<!-- metadata -->
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="generator" content="S5" />
+<meta name="version" content="S5 1.1" />
+<meta name="author" content="Marty Stepp" />
+<meta name="company" content="University of Washington" />
+<meta name="description"
+ content="CSE 190 M lecture slides about HTML user interface controls." />
+<meta name="keywords"
+ content="web programming, html, user interface, ui, control, cse 190 m" />
+ 
+<!-- configuration parameters -->
+<meta name="defaultView" content="slideshow" />
+<meta name="controlVis" content="hidden" />
+ 
+<!-- style sheet links -->
+<link rel="stylesheet" href="ui/default/slides.css" type="text/css" media="projection" id="slideProj" />
+<link rel="stylesheet" href="ui/default/outline.css" type="text/css" media="screen" id="outlineStyle" />
+<link rel="stylesheet" href="ui/default/print.css" type="text/css" media="print" id="slidePrint" />
+<link rel="stylesheet" href="ui/default/opera.css" type="text/css" media="projection" id="operaFix" />
+ 
+<!-- S5 JS -->
+<script src="ui/default/slides.js" type="text/javascript"></script>
+<script src="resources/slides.js" type="text/javascript"></script>
+ 
+</head>
+<body>
+ 
+<div class="layout">
+<div id="controls"><!-- DO NOT EDIT --></div>
+<div id="currentSlide"><!-- DO NOT EDIT --></div>
+<div id="header"></div>
+<div id="footer">
+ 
+<h1>Web Programming, Fall 2012</h1>
+<h2>HTML User Interface Controls</h2>
+
+<h3>CU-Daegu</h3>
+</div>
+ 
+</div>
+ 
+ 
+<div class="presentation">
+ 
+<div class="slide">
+
+
+ 
+</div>
+ 
+<div class="slide">
+<h1>Interactive HTML user interfaces</h1>
+ 
+
+ 
+<ul>
+<li>in this section, we'll learn how to make user interface controls (buttons, checkboxes, text fields, etc.) in HTML</li>
+<li> we will learn about following tags 
+<ul>
+<li>      
+   <code> &lt;button&gt; , &lt;textarea&gt;  , &lt;select&gt; , &lt;option&gt; , &lt;optgroup&gt; , &lt;input&gt; ,  &lt;fieldset&gt; , &lt;legend&gt; </code>
+</li> </ul>
+<li>controls are often used in HTML <span class="term">forms</span> (seen later)</li>
+<li>Javascript is integral to interactivity aspect of controls (event handlers)</li>
+</ul>
+ <img  src="images/form.jpg" alt="HTML form" />
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>Document Object Model (<a href="http://www.w3.org/TR/2004/PR-DOM-Level-3-Core-20040205/introduction.html">DOM</a>)</h1>
+ 
+
+ 
+<ul>
+<li>a representation of the current web page as a set of Javascript objects</li>
+<li>allows you to view/modify page elements in script code</li>
+<li><a href="http://www.w3schools.com/htmldom/default.asp">DOM tutorial</a></li>
+
+<p><img  src="images/domtree.gif" alt="DOM" /></p>
+</ul>
+</div>
+ 
+ 
+ 
+ 
+<div class="slide">
+<h1>Recall: event handlers</h1>
+ 
+<pre class="example html">
+&lt;h2 <span class="emphasizedcode">onclick=&quot;myFunction();&quot;</span>&gt;Click me!&lt;/h2&gt;
+</pre>
+ 
+<h2 onclick="javascript:alert('Fnord');">Click me!</h2>
+ 
+
+ 
+<ul>
+<li>HTML elements have special attributes called <span class="term">events</span></li>
+<li>Javascript functions can be set as <span class="term">event handlers</span>
+	<ul>
+	<li>when you interact with the element, the function will execute</li>
+	<li>an example of <a href="http://en.wikipedia.org/wiki/Event_driven_programming">event-driven programming</a></li>
+	</ul>
+</li>
+<li>event HTML attributes:
+	<ul>
+	<li>
+	<code><a href="http://www.w3schools.com/jsref/jsref_onabort.asp">onabort</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onblur.asp">onblur</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onchange.asp">onchange</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onclick.asp">onclick</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_ondblclick.asp">ondblclick</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onerror.asp">onerror</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onfocus.asp">onfocus</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onkeydown.asp">onkeydown</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onkeypress.asp">onkeypress</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onkeyup.asp">onkeyup</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onload.asp">onload</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onmousedown.asp">onmousedown</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onmousemove.asp">onmousemove</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onmouseout.asp">onmouseout</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onmouseover.asp">onmouseover</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onmouseup.asp">onmouseup</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onreset.asp">onreset</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onresize.asp">onresize</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onselect.asp">onselect</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onsubmit.asp">onsubmit</a></code>, 
+	<code><a href="http://www.w3schools.com/jsref/jsref_onunload.asp">onunload</a></code>
+	</li>
+	</ul>
+</li>
+</ul>
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>DOM <a href="http://www.w3schools.com/jsref/dom_obj_document.asp"><code>document</code></a> object and <a href="http://www.w3schools.com/htmldom/met_doc_getelementbyid.asp"><code>getElementById</code></a></h1>
+ 
+<div style="font-size: smaller">
+<pre class="example html">
+&lt;h2 <span class="emphasizedcode">onclick=&quot;makeRed();&quot;</span>&gt;Sell&lt;/h2&gt;
+&lt;p <span class="emphasizedcode">id=&quot;announce&quot;</span>&gt;Get it while it's hot!&lt;/p&gt;
+</pre>
+ 
+<pre class="example js">
+function makeRed() {
+    var para = <span class="emphasizedcode">document.getElementById(&quot;announce&quot;);</span>
+    para.style.color = &quot;red&quot;;
+}
+</pre>
+ 
+<h2 onclick="document.getElementById('announcement').style.color = 'red';" style="font-size: larger; line-height: 1em; margin-bottom: 5px;">Sell</h2>
+<p id="announcement" style="line-height: 1em; margin-top: 5px;">Get it while it's hot!</p>
+</div>
+
+ 
+<ul>
+<li><code>document</code> object's <code>getElementById</code> method returns an object representing the HTML element with the given <code>id</code> attribute (<code>null</code> if not found)</li>
+<li>DOM objects for all HTML elements contain the following properties: 
+	<ul>
+	<li><code>className</code>, <code>id</code>, <code>style</code>, <code>title</code></li>
+	</ul>
+</li>
+</ul>
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>DOM <a href="http://www.w3schools.com/jsref/dom_obj_style.asp"><code>style</code></a> property</h1>
+ 
+<pre class="example js">
+function enlarge(id) {
+    var element = document.getElementById(id);
+    <span class="emphasizedcode">element.style</span>.fontSize = "42pt";
+}
+</pre>
+ 
+<p onclick="this.style.fontSize = '42pt';">Click me and make me big!</p>
+ 
+
+ 
+<ul>
+<li><code>style</code> property represents the combined styles that apply to this element</li>
+<li>contains identical properties to the style properties set in CSS, except that names are changed from hyphenated to capitalized
+	<ul>
+	<li>examples: <code>backgroundColor</code>, <code>borderLeftWidth</code>, <code>fontFamily</code></li>
+	</ul>
+</li>
+</ul>
+</div>
+ 
+ 
+ 
+<!-- ***
+ 
+show an element modifying itself with this. syntax
+ 
+show general properties of every HTML element
+	
+	particularly className, id, style
+ 
+getElementsByTagName?
+ 
+ 
+http://krook.org/jsdom/
+ 
+http://www.w3schools.com/htmldom/dom_obj_style.asp
+ 
+-->
+ 
+ 
+ 
+<div class="slide">
+<h1>Buttons: <a href="http://www.w3schools.com/tags/tag_button.asp"><code>&lt;button&gt;</code></a></h1>
+ 
+<pre class="example html">
+&lt;button <span class="emphasizedcode">onclick=&quot;alert('Hello!');&quot;</span>&gt;Click me!&lt;/button&gt;
+</pre>
+ 
+<button onclick="alert('Hello!');">Click me!</button>
+ 
+
+ 
+<ul>
+<li>button's text appears inside <code>button</code> tag</li>
+<li>JS <code>onclick</code> event handler specifies button's behavior</li>
+</ul>
+ 
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>The DOM <code>innerHTML</code> property</h1>
+ 
+<pre class="example" style="font-size: smaller">
+&lt;button id="b1" onclick=<span class="emphasizedcode">&quot;myFunction('I did it!');&quot;</span>&gt;Click me!&lt;/button&gt;
+&lt;p id=&quot;target&quot;&gt;This text will be replaced.&lt;/p&gt;
+</pre>
+ 
+<pre class="example" style="font-size: smaller;">
+function myFunction(text) {
+    var p = document.getElementById("target");
+    <span class="emphasizedcode">p.innerHTML</span> = text;
+}
+</pre>
+ 
+<button onclick="document.getElementById('target').innerHTML = 'I did it!';">Click me!</button>
+<p id="target" style="font-size: smaller; line-height: 1.2em; padding: 0px; margin: 0px;">This text will be replaced.</p>
+ 
+
+ 
+<ul>
+<li><code>innerHTML</code> refers to the HTML text inside of an element:<br />
+<code>&lt;p&gt;this is the innerHTML of the p tag&lt;/p&gt;</code></li>
+<li>event handler can modify the <code>innerHTML</code> of another element</li>
+</ul>
+ 
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>Another <code>&lt;button&gt;</code> example</h1>
+ 
+<pre class="example html">
+&lt;button id="b1" onclick=<span class="emphasizedcode">&quot;addText();&quot;</span>&gt;Click me!&lt;/button&gt;
+</pre>
+ 
+<pre class="example js">
+function addText() {
+    var button = document.getElementById("b1");
+    <span class="emphasizedcode">button.innerHTML</span> += &quot; narf&quot;;
+}
+</pre>
+ 
+<button onclick="this.innerHTML += ' narf';">Click me!</button>
+ 
+
+ 
+<ul>
+<!--
+<li>any event handler can refer to its own object with <code>this.</code> notation</li>
+-->
+<li>also acceptable in this case:<br />
+	<code style="font-size: smaller">&lt;button onclick=<span class="emphasizedcode">&quot;this.innerHTML += ' narf';&quot;</span>&gt;Click me!&lt;/button&gt;</code></li>
+</ul>
+ 
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>Text boxes: <a href="http://www.w3schools.com/tags/tag_textarea.asp"><code>&lt;textarea&gt;</code></a> (<a href="http://www.w3schools.com/htmldom/dom_obj_textarea.asp">DOM</a>)</h1>
+ 
+<pre class="example html">
+<span class="emphasizedcode">&lt;textarea rows=&quot;4&quot; cols=&quot;20&quot;&gt;</span>
+Type your comments here.
+<span class="emphasizedcode">&lt;/textarea&gt;</span>
+</pre>
+ 
+<textarea rows="4" cols="20">
+Type your comments here.
+</textarea>
+ 
+
+ 
+<ul>
+<li>initial text placed inside <code>textarea</code> tag (optional)</li>
+<!--
+<li><code>rows</code> and <code>cols</code> attributes specify <code>textarea</code> size in characters</li>
+-->
+<li>optional <code>readonly</code> attribute means text cannot be modified</li>
+<li>DOM properties: <code>disabled</code>, <code>read<span class="slightemphasis">O</span>nly</code>, <code>value</code>
+	<ul>
+	<li>NOTE: get/set area's text using <code>value</code>, NOT <code>innerHTML</code></li>
+	</ul>
+</li>
+</ul>
+</div>
+
+<div class="slide">
+<hr/>
+<h1>Practice problem: Swap</h1>
+ 
+<ul>
+<li>Write the HTML and Javascript code to swap the text of two textarea </li>
+<li> Output should look like this </li>
+</br>
+<img src="images/swap.png" alt="swap">
+</ul>
+<hr/> 
+</div>
+ 
+
+<div class="slide">
+<h1>Practice problem: Shuffle</h1>
+ 
+<ul>
+<li>Write the HTML and Javascript code to shuffle the lines of text within a text area whenever a Shuffle button is clicked.</li>
+
+</ul>
+<hr/> 
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>Drop-down list: <a href="http://www.w3schools.com/tags/tag_select.asp"><code>&lt;select&gt;</code></a> (<a href="http://www.w3schools.com/jsref/dom_obj_select.asp">DOM</a>), <a href="http://www.w3schools.com/tags/tag_option.asp"><code>&lt;option&gt;</code></a> (<a href="http://www.w3schools.com/jsref/dom_obj_option.asp">DOM</a>)</h1>
+ 
+<pre class="example html">
+<span class="emphasizedcode">&lt;select&gt;</span>
+&lt;option&gt;Jerry&lt;/option&gt;
+&lt;option&gt;George&lt;/option&gt;
+&lt;option&gt;Kramer&lt;/option&gt;
+&lt;option&gt;Elaine&lt;/option&gt;
+<span class="emphasizedcode">&lt;/select&gt;</span>
+</pre>
+ 
+<select onchange="alert('You chose ' + this.value);">
+<option>Jerry</option>
+<option>George</option>
+<option>Kramer</option>
+<option>Elaine</option>
+</select>
+ 
+ 
+ 
+<ul>
+<li><code>option</code> element represents each choice</li>
+<li><code>select</code> optional attributes: <code>disabled</code>, <code>multiple</code>, <code>size</code></li>
+<li>attach <code>onchange</code> handler to <code>select</code> to cause behavior on each selection
+	<ul>
+	<li><code>&lt;select <span class="emphasizedcode">onchange=&quot;alert('You chose ' + this.value);&quot;</span>&gt;</code></li>
+	</ul>
+</li>
+</ul>
+ 
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>Using <code>&lt;select&gt;</code> for lists</h1>
+ 
+<pre class="example" style="font-size: smaller">
+&lt;select <span class="emphasizedcode">multiple=&quot;multiple&quot; size=&quot;3&quot;</span>&gt;
+&lt;option value=&quot;Jerry&quot;&gt;Jerry&lt;/option&gt;
+&lt;option value=&quot;George&quot;&gt;George&lt;/option&gt;
+&lt;option value=&quot;Kramer&quot;&gt;Kramer&lt;/option&gt;
+&lt;option value=&quot;Elaine&quot;&gt;Elaine&lt;/option&gt;
+&lt;option value=&quot;Newman&quot;&gt;Newman&lt;/option&gt;
+&lt;option value=&quot;Susan&quot;&gt;Susan&lt;/option&gt;
+&lt;/select&gt;
+</pre>
+ 
+<select multiple="multiple" size="3">
+<option>Jerry</option><option value="George">George</option>
+<option>Kramer</option><option value="Elaine">Elaine</option>
+<option>Newman</option><option value="Susan">Susan</option>
+</select>
+ 
+<hr />
+ 
+<ul>
+<li>DOM properties: <code>disabled</code>, <code>length</code>, <code>multiple</code>, <code>name</code>, <code>selectedIndex</code>, <code>size</code>, <code>value</code> (selected item text)</li>
+<li>DOM methods: <code>add(<span class="syntaxtemplate">option</span>, <span class="syntaxtemplate">index</span>)</code>, <code>remove(<span class="syntaxtemplate">index</span>)</code></li>
+</ul>
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>Option groups: <a href="http://www.w3schools.com/tags/tag_optgroup.asp"><code>&lt;optgroup&gt;</code></a></h1>
+ 
+<pre class="example" style="font-size: smaller">
+&lt;select&gt;
+<span class="emphasizedcode">&lt;optgroup label=&quot;Major Characters&quot;&gt;</span>
+&lt;option value=&quot;Jerry&quot;&gt;Jerry&lt;/option&gt;
+&lt;option value=&quot;George&quot;&gt;George&lt;/option&gt;
+&lt;option value=&quot;Kramer&quot;&gt;Kramer&lt;/option&gt;
+&lt;option value=&quot;Elaine&quot;&gt;Elaine&lt;/option&gt;
+<span class="emphasizedcode">&lt;/optgroup&gt;</span>
+<span class="emphasizedcode">&lt;optgroup label=&quot;Minor Characters&quot;&gt;</span>
+&lt;option value=&quot;Newman&quot;&gt;Newman&lt;/option&gt;
+&lt;option value=&quot;Susan&quot;&gt;Susan&lt;/option&gt;
+<span class="emphasizedcode">&lt;/optgroup&gt;</span>
+&lt;/select&gt;
+</pre>
+ 
+<select>
+<optgroup label="Major Characters">
+<option value="Jerry">Jerry</option>
+<option value="George">George</option>
+<option value="Kramer">Kramer</option>
+<option value="Elaine">Elaine</option>
+</optgroup>
+<optgroup label="Minor Characters">
+<option value="Newman">Newman</option>
+<option value="Susan">Susan</option>
+</optgroup>
+</select>
+ 
+ 
+ 
+<ul>
+<li>what should we do if we don't like the bold italic?</li>
+</ul>
+ 
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>Input fields: <a href="http://www.w3schools.com/tags/tag_input.asp"><code>&lt;input&gt;</code></a></h1>
+ 
+<pre class="example html">
+&lt;<span class="emphasizedcode">input</span> type=&quot;text&quot; /&gt;&lt;br /&gt;
+&lt;<span class="emphasizedcode">input</span> type=&quot;password&quot; size=&quot;12&quot; /&gt;
+</pre>
+ 
+<input type="text" /><br />
+<input type="password" size="12" />
+ 
+<ul>
+<li>creates many different types of input controls, depending on its <code>type</code> attribute</li>
+<li>always empty; contains attributes only</li>
+<li>attributes: <code>accept</code>, <code>alt</code>, <code>disabled</code>, <code>maxlength</code>, <code>name</code>, <code>readonly</code>, <code>size</code>, <code>src</code>, <code>type</code>, <code>value</code></li>
+<li>DOM properties for <code>type=&quot;text&quot;</code> and <code>type=&quot;password&quot;</code>: <code>disabled</code>, <code>maxLength</code>, <code>readOnly</code>, <code>size</code>, <code>value</code> (text in field)</li>
+</ul>
+ 
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>Radio buttons (<a href="http://www.w3schools.com/jsref/dom_obj_radio.asp">DOM</a>)</h1>
+ 
+<pre class="example" style="font-size: smaller">
+&lt;input <span class="emphasizedcode">type=&quot;radio&quot;</span> name=&quot;creditcards&quot; id=&quot;visa&quot; /&gt;
+    &lt;label for=&quot;visa&quot;&gt;Visa&lt;/label&gt;
+&lt;input <span class="emphasizedcode">type=&quot;radio&quot;</span> name=&quot;creditcards&quot; id=&quot;mastercard&quot; /&gt;
+    &lt;label for=&quot;mastercard&quot;&gt;MasterCard&lt;/label&gt;
+&lt;input <span class="emphasizedcode">type=&quot;radio&quot;</span> name=&quot;creditcards&quot; id=&quot;amex&quot; /&gt;
+    &lt;label for=&quot;amex&quot;&gt;American Express&lt;/label&gt;
+</pre>
+ 
+<div style="font-size: smaller">
+<input type="radio" name="creditcards" id="visa" /><label for="visa">Visa</label>
+<input type="radio" name="creditcards" id="mastercard" /><label for="mastercard">MasterCard</label>
+<input type="radio" name="creditcards" id="amex" /><label for="amex">American Express</label>
+</div>
+ 
+ 
+ 
+<ul>
+<li>grouped by (required) <code>name</code> attribute</li>
+<li>button's text is a <code>label</code> element with <code>for</code> attribute set to button's <code>id</code></li>
+<li>DOM properties: <code>checked</code>, <code>defaultChecked</code>, <code>disabled</code></li>
+</ul>
+ 
+</div>
+ 
+ 
+ 
+<div class="slide">
+<h1>Checkboxes (<a href="http://www.w3schools.com/jsref/dom_obj_checkbox.asp">DOM</a>)</h1>
+ 
+<pre class="example" style="font-size: smaller">
+&lt;input <span class="emphasizedcode">type=&quot;checkbox&quot;</span> name=&quot;toppings&quot; value=&quot;lettuce&quot; id=&quot;lettuce&quot; /&gt;
+    &lt;label for=&quot;lettuce&quot;&gt;Lettuce&lt;/label&gt;
+&lt;input <span class="emphasizedcode">type=&quot;checkbox&quot;</span> name=&quot;toppings&quot; value=&quot;tomato&quot; id=&quot;tomato&quot; /&gt;
+    &lt;label for=&quot;tomato&quot;&gt;Tomato&lt;/label&gt;
+&lt;input <span class="emphasizedcode">type=&quot;checkbox&quot;</span> name=&quot;toppings&quot; value=&quot;pickles&quot; id=&quot;pickles&quot; /&gt;
+    &lt;label for=&quot;pickles&quot;&gt;Pickles&lt;/label&gt;
+</pre>
+ 
+<div style="font-size: smaller">
+<input type="checkbox" name="toppings" value="lettuce" id="lettuce" />
+    <label for="lettuce">Lettuce</label>
+<input type="checkbox" name="toppings" value="tomato" id="tomato" />
+    <label for="tomato">Tomato</label>
+<input type="checkbox" name="toppings" value="pickles" id="pickles" />
+    <label for="pickles">Pickles</label>
+</div>
+ 
+ 
+ 
+<ul>
+<li><code>name</code> attribute is required</li>
+<li>use <code>checked="checked"</code> attribute in HTML to initially check the box</li>
+<li>DOM properties: <code>checked</code> (Boolean), <code>defaultChecked</code>, <code>disabled</code></li>
+</ul>
+ 
+</div>
+ 
+ 
+ 
+<!-- save this for later when we do real HTML forms
+ 
+<div class="slide">
+<h1>File upload boxes (<a href="http://www.w3schools.com/htmldom/dom_obj_fileupload.asp">DOM</a>)</h1>
+ 
+<pre class="example html">
+&lt;input <span class="emphasizedcode">type=&quot;file&quot;</span> name=&quot;uploadfile&quot; /&gt;
+</pre>
+ 
+<input type="file" name="uploadfile" />
+ 
+ 
+ 
+<ul>
+<li><code>name</code> attribute is required</li>
+<li>DOM properties: <code>accept</code> (comma-separated list of MIME types this box accepts), <code>disabled</code>, <code>name</code>, <code>value</code> (text in box)</li>
+</ul>
+ 
+</div>
+-->
+ 
+ 
+ 
+<div class="slide">
+<h1>Grouping input: <a href="http://www.w3schools.com/tags/tag_fieldset.asp"><code>&lt;fieldset&gt;</code></a>, <a href="http://www.w3schools.com/tags/tag_legend.asp"><code>&lt;legend&gt;</code></a></h1>
+ 
+<pre class="example" style="font-size: smaller">
+<span class="emphasizedcode">&lt;fieldset&gt;</span>
+<span class="emphasizedcode">&lt;legend&gt;</span>Credit cards:<span class="emphasizedcode">&lt;/legend&gt;</span>
+&lt;input type=&quot;radio&quot; name=&quot;creditcards&quot; id=&quot;visa&quot; /&gt;
+    &lt;label for=&quot;visa&quot;&gt;Visa&lt;/label&gt;&lt;br /&gt;
+&lt;input type=&quot;radio&quot; name=&quot;creditcards&quot; id=&quot;mastercard&quot; /&gt;
+    &lt;label for=&quot;mastercard&quot;&gt;MasterCard&lt;/label&gt;&lt;br /&gt;
+&lt;input type=&quot;radio&quot; name=&quot;creditcards&quot; id=&quot;amex&quot; /&gt;
+    &lt;label for=&quot;amex&quot;&gt;American Express&lt;/label&gt;&lt;br /&gt;
+<span class="emphasizedcode">&lt;/fieldset&gt;</span>
+</pre>
+ 
+<div style="font-size: smaller">
+<fieldset>
+<legend>Credit cards:</legend>
+<input type="radio" name="creditcards" id="visa2" />
+    <label for="visa2">Visa</label><br />
+<input type="radio" name="creditcards" id="mastercard2" />
+    <label for="mastercard2">MasterCard</label><br />
+<input type="radio" name="creditcards" id="amex2" />
+    <label for="amex2">American Express</label><br />
+</fieldset>
+</div>
+ 
+ 
+ 
+<ul>
+<li>groups related input fields; <code>legend</code> supplies an optional caption</li>
+</ul>
+ 
+</div>
+ 
+ 
+ 
+<div class="slide">
+<hr/>
+<h1>Practice problem: Colored text</h1>
+ 
+<ul>
+<li>Write the HTML and Javascript code to present a text area and three on/off radio button for red, green, and blue.</li>
+<li>When the user checks radio button, it will change the color from the text area's text.</li>
+</ul>
+<hr/>
+</div>
+ 
+ 
+ 
+</div>
+ 
+</body>
+</html>
+
